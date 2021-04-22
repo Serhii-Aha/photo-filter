@@ -75,14 +75,24 @@
   
   
   <script>
+   
     // Обработка изображений посредством переменных CSS (:root{})
     const inputs = document.querySelectorAll('.filters input'); 
     function handleUpdate() {
       const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix,);
     }
     inputs.forEach(input => input.addEventListener('input', handleUpdate));
-  </script>
+
+    // Добавление значения в поле output 
+    const outputs = document.querySelector('.filters');
+    outputs.addEventListener('input', (filtersElem) => {
+    const filtersItem = filtersElem.target;
+    const value = filtersItem.value;
+    filtersItem.nextElementSibling.value = value;
+    })
+
+</script>
 
 
 </body>
