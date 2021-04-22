@@ -88,8 +88,7 @@
     const outputs = document.querySelector('.filters');
     outputs.addEventListener('input', (filtersElem) => {
     const filtersItem = filtersElem.target;
-    const value = filtersItem.value;
-    filtersItem.nextElementSibling.value = value;
+    filtersItem.nextElementSibling.value = filtersItem.value;
     })
 
 </script>
