@@ -48,7 +48,7 @@
     </div>
     <div class="editor">
       <div class="btn-container">
-        <button class="btn btn-reset">Reset</button>
+        <button class="btn btn-reset" id = "btn-reset">Reset</button>
         <button class="btn btn-next btn-active">Next picture</button>
         <label class="btn btn-load" for="btnInput">
           Load picture
@@ -75,21 +75,33 @@
   
   
   <script>
+    // let btnReset = document.getElementsById("btn-reset");
+    // btnReset.addEventListener("click", reset_Btn());
+    function reset_Btn () {
+      console.log('ygfygfyfjhfj');
+    root.style.setProperty('--blur', '0px');
+    root.style.setProperty('--invert', '0%');
+    root.style.setProperty('--sepia', '0%');
+    root.style.setProperty('--saturate','100%');
+    root.style.setProperty('--hue', '0deg');
+    // document.documentElement.style.getPropertyValue('--myVariable');
+    }
+
    
-    // Обработка изображений посредством переменных CSS (:root{})
+    // Обработка изображений посредством переменных CSS (:root{}) - inputs
+     // Добавление значения в поле output - outputs
     const inputs = document.querySelectorAll('.filters input'); 
+    const outputs = document.querySelector('.filters');
+
     function handleUpdate() {
       const suffix = this.dataset.sizing || '';
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix,);
+      outputs.addEventListener('input', (filtersElem) => {
+      const filtersItem = filtersElem.target;
+      filtersItem.nextElementSibling.value = filtersItem.value;    
+      })
     }
     inputs.forEach(input => input.addEventListener('input', handleUpdate));
-
-    // Добавление значения в поле output 
-    const outputs = document.querySelector('.filters');
-    outputs.addEventListener('input', (filtersElem) => {
-    const filtersItem = filtersElem.target;
-    filtersItem.nextElementSibling.value = filtersItem.value;
-    })
 
 </script>
 
